@@ -8,7 +8,7 @@ import { BiLogOut } from 'react-icons/bi';
 import { useState } from 'react';
 
 
-const Header = ({money}) => {
+const Header = ({money, img}) => {
 
 
     const [isMovile, setIsMovile] = useState(false)
@@ -24,7 +24,12 @@ const Header = ({money}) => {
             <div className="flex items-center gap-2">
                 <div className="h-20 w-20 overflow-hidden shadow-2xl border-2 border-cyan-300 rounded-full">
                     
-                    <img src="https://www.pavilionweb.com/wp-content/uploads/2017/03/man-300x300.png" alt="" className=" object-cover"/>
+                {img === 'img' || img == underline ?  <img src="https://www.pavilionweb.com/wp-content/uploads/2017/03/man-300x300.png" alt="" className=" object-cover"/> 
+                
+                : <img src={img.url} alt="" className=" object-cover"/>
+                
+                }
+                   
                 
                 </div>
 
@@ -44,7 +49,7 @@ const Header = ({money}) => {
 
             <div className="hidden md:flex md:flex-row items-center gap-5 font-semibold mt-10 md:mt-0 text-2xl md:text-base">
 
-                <Link to='/home'>Home</Link>
+                <Link to='/home' className="">Home</Link>
 
                 <Link to='/home/transactions'>History</Link>
 
@@ -62,29 +67,35 @@ const Header = ({money}) => {
                      
                 isMovile &&
                  
-                <div className="md:hidden absolute top-0 right-0 w-1/3 ">
+                <div className="md:hidden absolute top-0 right-0 w-1/3">
 
-                    <div className=" bg-slate-900 text-gray-200 p-5 w-full absolute top-0 right-0 text-xl h-screen">
+                    <div className=" bg-slate-900 text-gray-200 p-5 w-full absolute top-0 right-0 text-md h-screen">
 
-                            <button className="p-5 text-2xl font-bold" onClick={() => setIsMovile(false)}> X </button>
+                            <button className="py-5 text-2xl font-bold" onClick={() => setIsMovile(false)}> X </button>
 
-                        <div className="flex flex-col items-center gap-20 pt-10">
-                            
-                            <div className="flex gap-2 items-center">
-                                <HiHome />
-                                <Link to='/home'>Home</Link>
-                            </div>
+                        <div className=" flex flex-col items-center gap-24 pt-24">
+
+                            <Link to='/home' className="flex gap-2 items-center">
+                                <p className="text-2xl"><HiHome /></p>
+
+                                Home
+
+                            </Link>
+
+                            <Link to='/home/transactions' className="flex gap-2 items-center">
+                                <p className="text-2xl"><FaHistory /></p>
+
+                                History
+
+                            </Link>
 
 
-                            <div className="flex gap-2 items-center">
-                                <FaHistory />
-                                <Link to='/home/transactions'>History</Link>
-                            </div>
+                            <button  className="flex gap-2 items-center" onClick={() => console.log('Log out')}>
+                                <p className="text-2xl"><BiLogOut /></p>
 
-                            <div className="flex gap-2 items-center">
-                                <BiLogOut />
-                                <button onClick={() => console.log('Log out')}>Log out</button>
-                            </div>
+                                Log out
+                            </button>
+
                         </div>
                     </div>
                     
