@@ -141,9 +141,12 @@ const FormLoginAndRegister = ({ login, functionUser, alert }) => {
                         </div>
                     </div>
 
+                    {login ? 
 
-
-                    <ButtonForm text='Login'/>
+                      <ButtonForm text='Login'/>
+                    
+                
+                    : <ButtonForm text='Sign In'/>}
 
 
 
