@@ -11,6 +11,9 @@ export const AuthProvider = ({children}) => {
 
   const [loading, setLoading] = useState(true)
 
+  const [alert, setAlert ] = useState({});
+
+
   useEffect(() => {
 
     const authUser = async () => {
@@ -69,7 +72,10 @@ export const AuthProvider = ({children}) => {
         
       } catch (error) {
         
-        console.log(error)
+        setAlert({
+          msg: error?.response.data.msg,
+          error:true
+        })
         
       }
       
@@ -99,6 +105,7 @@ export const AuthProvider = ({children}) => {
       loginUser,
       auth,
       loading,
+      alert,
 
 
     }}
