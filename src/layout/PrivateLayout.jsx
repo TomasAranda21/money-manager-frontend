@@ -16,10 +16,9 @@ const PrivateLayout = () => {
 
     if(loadingOper) return 'cargando'
 
-
     return (
         <>
-            <Header money={auth.budget}/>
+            <Header money={auth.budget} img={auth.img}/>
   
             { auth?._id ? (
             <main className="container mx-auto mt-13">
