@@ -1,8 +1,18 @@
-import React from 'react'
+import FormLoginAndRegister from '../components/Form/FormLoginAndRegister'
+import useAuth from '../hooks/useAuth'
 
 const RegisterUser = () => {
+
+  const { registerUser, alert } = useAuth()
+
   return (
-    <div>RegisterUser</div>
+
+    <div>
+
+      <FormLoginAndRegister login={false}  functionUser={registerUser} alert={alert}/>
+
+    </div>
+
   )
 }
 
