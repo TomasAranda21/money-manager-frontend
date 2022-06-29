@@ -77,6 +77,13 @@ export const AuthProvider = ({children}) => {
           error:true
         })
         
+        setTimeout(() => {
+
+          setAlert({})
+
+        }, 5000)
+        
+        
       }
       
     }
