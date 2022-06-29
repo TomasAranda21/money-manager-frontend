@@ -90,9 +90,11 @@ export const AuthProvider = ({children}) => {
     
   const registerUser = async ({ name, email, password}) => {
 
+    console.log(name)
+
     try {
 
-      await Axios.post('/register', { name, email, password})
+      await Axios.post('/register-users', { name, email, password})
       
     } catch (error) {
       console.log(error)
