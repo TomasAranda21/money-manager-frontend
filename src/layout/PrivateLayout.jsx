@@ -1,5 +1,7 @@
 import { Outlet, Navigate } from 'react-router-dom'
 
+import Header from '../components/Header/HeaderMain'
+
 import useAuth from '../hooks/useAuth'
 import useOperation from '../hooks/useOperation'
 
@@ -17,6 +19,7 @@ const PrivateLayout = () => {
 
     return (
         <>
+            <Header money={auth.budget}/>
   
             { auth?._id ? (
             <main className="container mx-auto mt-13">
