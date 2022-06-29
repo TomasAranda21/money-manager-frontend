@@ -1,16 +1,43 @@
-import { useState } from 'react'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+
+
+import { AuthProvider } from './context/AuthContext'
+
+
+import AuthLayout from './layout/AuthLayout'
+
+
+
+// Auth path
+import Login from './pages/LoginUser'
+import Register from './pages/RegisterUser'
 
 
 function App() {
 
   return (
-    <div className="">
+    <BrowserRouter>
+      <AuthProvider>
 
-      <h1 class="text-3xl font-bold underline">
-        Hello world!
-      </h1>
+          <Routes>
 
-    </div>
+
+            <Route path="/" element={<AuthLayout/>}>
+
+                  <Route index element={<Login />} /> 
+             
+            
+                  <Route path="sign-in" element={ <Register />} />
+          
+            </Route>
+
+
+
+
+          </Routes>
+
+      </AuthProvider>
+    </BrowserRouter>
   )
 }
 
