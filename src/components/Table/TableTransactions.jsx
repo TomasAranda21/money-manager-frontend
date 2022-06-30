@@ -1,21 +1,11 @@
 import React, { useEffect, useState } from 'react'
 
-import { format} from 'date-fns'
-import esLocale from 'date-fns/locale/es'
+import { formatDate } from '../../helpers/FormatDate'
 
 
 const TableTransactions = ({type, operations, deleteOperation, setEdition, setViewModal, isType}) => {
 
     const [typeOperation, setTypeOperation] = useState([])
-
-    function formatDate (data) {
-        const [ year, month, day ] = data.substr(0, 10).split('-')
-        return format(new Date(
-                year,
-                (month - 1),
-                day,
-        ), "LLL 'of' do yyyy", )
-    }
 
     useEffect(() => {
 
@@ -29,11 +19,15 @@ const TableTransactions = ({type, operations, deleteOperation, setEdition, setVi
 
   return (
 
-    <div>
-        <table className={`w-2/3 mx-auto border-b-2 rounded-xl ${type !== 'expense' ? 'border-cyan-500' : 'border-red-600'}  p-5 shadow-xl`}>
-            <thead className="">
+    <div className={`border-b-2 md:w-2/3   w-full mx-auto overflow-auto   rounded-xl p-5 
+    ${type !== 'expense' ? 'border-cyan-500' : 'border-red-600'}   `}>  
+
+
+        <table className="w-full ">
+            
+            <thead className=" ">
                 <tr className={`${type !== 'expense' ? 'bg-cyan-500' : 'bg-red-600'} text-white font-bold `}>
-                    <th className="py-3">Amount 💷</th>
+                    <th className="py-3 px-3">Amount 💷</th>
                     <th>Category 🧮</th>
                     <th>Concept 📝</th>
                     <th>Date 🗓</th>
@@ -53,7 +47,7 @@ const TableTransactions = ({type, operations, deleteOperation, setEdition, setVi
 
                         <td>{oper.concept}</td>
 
-                        <td>{formatDate(oper.date)}</td>
+                        <td className="">{formatDate(oper.date)}</td>
 
                         <td className="flex gap-5 my-5">
 
