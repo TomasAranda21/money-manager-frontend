@@ -6,7 +6,7 @@ const ButtonFormtype = ({onClick, text}) => {
 
     <button 
     
-    className={`uppercase text-2xl border-neutral-300 border-2 px-2 py-1
+    className={`uppercase text-xl md:text-2xl border-neutral-300 border-2 px-2 py-1
 
     ${text === 'expense' ? "hover:text-orange-500" : "hover:text-emerald-600"} 
 
