@@ -16,7 +16,7 @@ const InputsForm = ({name, value, error, touched, onBlur, onChange, type, placeh
             name={name}
             placeholder= {placeholder}
 
-            className={`input_contact text-black placeholder:text-slate-400 bg-white rounded-none  mt-1 p-2 border  
+            className={`input_contact text-black placeholder:text-slate-400 bg-white rounded-none  mt-1 md:p-2 p-1 border  
             placeholder-slate-600
             focus:outline-none w-full block
             border-gray-500
