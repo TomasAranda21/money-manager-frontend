@@ -9,7 +9,7 @@ import { useState } from 'react';
 import ModalEditBudget from '../Modals/ModalEditBudget';
 
 
-const Header = ({money, img}) => {
+const Header = ({money, img, logOut}) => {
 
 
     const [isMovile, setIsMovile] = useState(false)
@@ -60,7 +60,7 @@ const Header = ({money, img}) => {
 
                 <Link to='/home/transactions'>History</Link>
 
-                <button onClick={() => console.log('Log out')}>Log out</button>
+                <button onClick={() => logOut()}>Log out</button>
 
             </div>
 
@@ -97,7 +97,7 @@ const Header = ({money, img}) => {
                             </Link>
 
 
-                            <button  className="flex gap-2 items-center" onClick={() => console.log('Log out')}>
+                            <button  className="flex gap-2 items-center" onClick={() => logOut()}>
                                 <p className="text-2xl"><BiLogOut /></p>
 
                                 Log out

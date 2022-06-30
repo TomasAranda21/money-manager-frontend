@@ -8,7 +8,7 @@ import useOperation from '../hooks/useOperation'
 const PrivateLayout = () => {
 
 
-    const { auth, loading} = useAuth()
+    const { auth, loading, logOut} = useAuth()
 
     const { loadingOper } = useOperation()
 
@@ -18,7 +18,7 @@ const PrivateLayout = () => {
 
     return (
         <>
-            <Header money={auth.budget} img={auth.img}/>
+            <Header money={auth.budget} img={auth.img} logOut={logOut}/>
   
             { auth?._id ? (
             <main className="container mx-auto mt-13">

@@ -132,6 +132,21 @@ export const AuthProvider = ({children}) => {
 
 
 
+  const logOut = async () => {
+
+    const exit = confirm('¿Seguro que quieres cerrar sesion?')
+
+    if(exit){
+
+        localStorage.removeItem('token_user000123040501')
+
+        setAuth({})
+    }
+
+  }
+
+
+
 
 
 
@@ -141,6 +156,7 @@ export const AuthProvider = ({children}) => {
       registerUser,
       loginUser,
       updateBudget,
+      logOut,
       auth,
       loading,
       alert,
