@@ -39,7 +39,13 @@ const FormEditBudget = ({setViewModal, functionOperation, id, alert, user_budget
                 errors.budget = 'Enter a valid budget.'
 
             }else if(!budget_exp.test(budget)){
+                
                 errors.budget = 'Please only numbers and at most 12 digits.'
+
+            }else if(budget < 0){
+
+                errors.budget = 'Please only numbers greater than 0.'
+
             }
 
             return errors
@@ -48,7 +54,6 @@ const FormEditBudget = ({setViewModal, functionOperation, id, alert, user_budget
 
 
         onSubmit={({budget}) => {
-            console.log(budget)
 
             functionOperation({id, budget})
 
