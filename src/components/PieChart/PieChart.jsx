@@ -1,7 +1,5 @@
-import React, { useEffect, useState } from 'react';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
-import { getColors, getNames } from '../../helpers/getOperations';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -10,9 +8,8 @@ export function PieChart( { categories, sumAmount, type } ) {
     
     if(sumAmount === undefined) return 'cargando'
 
-    const bg_colors = getColors(type)
-    
-    const names_labels = getNames(type)
+    const bg_colors = type.map(e => e.color)
+    const names_labels = type.map(e => e.categories)
 
 
 

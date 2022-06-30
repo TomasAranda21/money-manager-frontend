@@ -25,6 +25,7 @@ const ModalAddOperation = ({setViewModal, addOperation, alert}) => {
         setIsExpense(false)
     }
 
+
   return (
 
     <div className="absolute top-0 w-full h-screen left-0 backdrop-brightness-50 px-2">
@@ -72,7 +73,7 @@ const ModalAddOperation = ({setViewModal, addOperation, alert}) => {
                     category={""}
                     date={""}
 
-                    arrCategory={ExpenseCategory}
+                    arrCategory={ExpenseCategory.map(e => e.categories)}
                     handleComeBack={handleComeBack}
                     type={true}
                     alert={alert}
@@ -94,7 +95,7 @@ const ModalAddOperation = ({setViewModal, addOperation, alert}) => {
                     amount={""}
                     concept={""}
                     category={""}
-                    arrCategory={IncomeCategory}
+                    arrCategory={IncomeCategory.map(e => e.categories)}
                     date={""}
                     handleComeBack={handleComeBack}
                     alert={alert}
