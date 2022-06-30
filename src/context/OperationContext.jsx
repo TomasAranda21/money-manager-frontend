@@ -15,6 +15,7 @@ export const OperationProvider = ({children}) => {
 
     const [editionOper, setEditionOper] = useState([])
 
+
     const token = localStorage.getItem('token_user000123040501')
 
     useEffect(() => {
@@ -40,7 +41,7 @@ export const OperationProvider = ({children}) => {
         getOperation()
 
 
-    }, [])
+    }, [operations])
 
 
 
@@ -60,9 +61,17 @@ export const OperationProvider = ({children}) => {
 
     }
 
-    const updateOperation = async (id) => {
+    const updateOperation = async (values) => {
 
-        console.log(id)
+        try {
+
+            const {data} = await Axios.put(`/${editionOper._id}`, values, checkToken(token))
+
+            console.log(data)
+
+        } catch (error) {
+            console.log(error)
+        }
 
     }
 
@@ -77,6 +86,10 @@ export const OperationProvider = ({children}) => {
 
     const deleteOperation = async (id) => {
 
+    const deleted = confirm('Sure you want to delete?')
+
+    if(deleted) {
+
         try {
             const {data} = await Axios.delete(`/${id}`, checkToken(token))
 
@@ -87,6 +100,7 @@ export const OperationProvider = ({children}) => {
         } catch (error) {
             console.log(error)
         }
+    }
 
 
     }
