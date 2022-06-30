@@ -6,12 +6,16 @@ import { HiHome } from 'react-icons/hi';
 import { FaHistory } from 'react-icons/fa';
 import { BiLogOut } from 'react-icons/bi'; 
 import { useState } from 'react';
+import ModalEditBudget from '../Modals/ModalEditBudget';
 
 
 const Header = ({money, img}) => {
 
 
     const [isMovile, setIsMovile] = useState(false)
+
+    const [viewModal, setViewModal] = useState(false)
+
 
   return (
 
@@ -21,8 +25,9 @@ const Header = ({money, img}) => {
         <nav className="flex items-center justify-between relative">
 
         <div className="flex items-center justify-between container mx-auto relative p-5 ">
-            <div className="flex items-center gap-2">
-                <div className="h-20 w-20 overflow-hidden shadow-2xl border-2 border-cyan-300 rounded-full">
+
+            <div className="flex flex-col md:flex-row items-center gap-2">
+                <div className="h-14 w-14 md:h-20 md:w-20 overflow-hidden shadow-2xl border-2 border-cyan-300 rounded-full">
                     
                 {img === 'img' || img == underline ?  <img src="https://www.pavilionweb.com/wp-content/uploads/2017/03/man-300x300.png" alt="" className=" object-cover"/> 
                 
@@ -33,16 +38,18 @@ const Header = ({money, img}) => {
                 
                 </div>
 
-                    <div className="flex items-center gap-2 md:text-xl font-semibold bg-slate-100 shadow-xl p-2 border-2 border-cyan-300 rounded">
+                <div 
+                className="flex items-center mb-4 md:mb-0 gap-2 text-sm md:text-xl font-semibold bg-slate-100 shadow-xl p-2 border-2 border-cyan-300 rounded">
+
                     <p> 💰 My Budget:</p>
                     <h2>${money}</h2>
 
-                    <button onClick={() => console.log('Agregar dinero')}
-                    className="text-green-600 font-bold text-2xl cursor-pointer">
+                    <button onClick={() => setViewModal(true)}
+                    className="text-green-500 font-bold text-xl md:text-2xl cursor-pointer hover:text-green-700 md:hover:text-3xl duration-300">
                         <BsPlusCircle />
                     </button>
 
-                    </div>
+                </div>
 
             </div>
 
@@ -61,13 +68,13 @@ const Header = ({money, img}) => {
 
 
             {/* Navbar mobile*/}
-                <button className="px-8 text-2xl md:hidden " onClick={() => setIsMovile(true)}> <GiHamburgerMenu /></button>
+                <button className="px-8 text-2xl md:hidden absolute top-10 right-0" onClick={() => setIsMovile(true)}> <GiHamburgerMenu /></button>
                 
                  {
                      
                 isMovile &&
                  
-                <div className="md:hidden absolute top-0 right-0 w-1/3">
+                <div className="md:hidden absolute top-0 right-0 w-2/4">
 
                     <div className=" bg-slate-900 text-gray-200 p-5 w-full absolute top-0 right-0 text-md h-screen">
 
@@ -104,6 +111,9 @@ const Header = ({money, img}) => {
 
 
         </nav>
+
+
+        {viewModal && <ModalEditBudget setViewModal={setViewModal}/> }
 
     </header>
 

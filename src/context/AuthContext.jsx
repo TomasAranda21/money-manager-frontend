@@ -13,18 +13,16 @@ export const AuthProvider = ({children}) => {
 
   const [alert, setAlert ] = useState({});
 
+  const token = localStorage.getItem('token_user000123040501')
 
   useEffect(() => {
 
     const authUser = async () => {
 
-      const token = localStorage.getItem('token_user000123040501')
-
       if(!token){
 
         setLoading(false)
         return
-
       }
 
       try {
@@ -90,8 +88,6 @@ export const AuthProvider = ({children}) => {
     
   const registerUser = async ({ name, email, password}) => {
 
-    console.log(name)
-
     try {
 
       await Axios.post('/register-users', { name, email, password})
@@ -100,6 +96,38 @@ export const AuthProvider = ({children}) => {
       console.log(error)
     }
 
+  }
+
+
+  const updateBudget = async ({ id, budget }) => {
+
+    try {
+
+      const {data} = await Axios.put(`/update-budget/${id}`, {budget}, checkToken(token))
+
+      setAuth(data)
+
+      setAlert({
+        msg: "Congratulations change made successfully!",
+        error:false
+      })
+      
+      setTimeout(() => {
+
+        setAlert({})
+
+      }, 5000)
+      
+
+    } catch (error) {
+
+      console.log(error)
+
+      return
+      
+    }
+
+    
   }
 
 
@@ -112,6 +140,7 @@ export const AuthProvider = ({children}) => {
     value={{
       registerUser,
       loginUser,
+      updateBudget,
       auth,
       loading,
       alert,
