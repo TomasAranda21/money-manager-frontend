@@ -18,6 +18,7 @@ import Register from './pages/RegisterUser'
 
 import PrivateLayout from './layout/PrivateLayout'
 import Home from './pages/HomeUser'
+import History from './pages/HistoryUser'
 
 
 
@@ -44,6 +45,9 @@ function App() {
             <Route path="/home" element={<PrivateLayout/>}>
 
               <Route index element={<Home />} /> 
+
+
+              <Route path="transactions" element={ <History />} />
 
 
             </Route>
