@@ -8,7 +8,7 @@ import useOperation from '../hooks/useOperation'
 const HomeUser = () => {
 
 
-    const { auth } = useAuth()
+    const { auth, alert } = useAuth()
     const {addOperation, operations} = useOperation()
 
     const [viewModal, setViewModal] = useState(false)
@@ -32,7 +32,7 @@ const HomeUser = () => {
         </div>
 
 
-        {viewModal && <ModalAddOperation setViewModal={setViewModal} addOperation={addOperation}/>}
+        {viewModal && <ModalAddOperation setViewModal={setViewModal} addOperation={addOperation} alert={alert}/>}
 
 
     </div>
