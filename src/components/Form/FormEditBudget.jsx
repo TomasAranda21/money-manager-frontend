@@ -88,7 +88,7 @@ const FormEditBudget = ({setViewModal, functionOperation, id, alert, user_budget
 
 
                     <div className="mt-10 w-2/3 mx-auto">
-                        <ButtonForm text='update budget'/>
+                        <ButtonForm text='Update Budget'/>
                     </div>
 
                 </form>
