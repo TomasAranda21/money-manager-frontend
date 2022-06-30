@@ -6,7 +6,7 @@ import ButtonFormtype from '../Buttons/ButtonFormtype'
 import { MdArrowBack } from 'react-icons/md';
 import ButtonClose from '../Buttons/ButtonClose';
 
-const ModalAddOperation = ({setViewModal, addOperation}) => {
+const ModalAddOperation = ({setViewModal, addOperation, alert}) => {
 
     const [isIncome, setIsIncome] = useState(false)
     const [isExpense, setIsExpense] = useState(false)
@@ -75,6 +75,7 @@ const ModalAddOperation = ({setViewModal, addOperation}) => {
                     arrCategory={ExpenseCategory}
                     handleComeBack={handleComeBack}
                     type={true}
+                    alert={alert}
 
                     
                     /> 
@@ -96,6 +97,7 @@ const ModalAddOperation = ({setViewModal, addOperation}) => {
                     arrCategory={IncomeCategory}
                     data={""}
                     handleComeBack={handleComeBack}
+                    alert={alert}
                     /> 
 
                 </div>
