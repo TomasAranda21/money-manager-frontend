@@ -6,7 +6,7 @@ import ButtonForm from '../Buttons/ButtonForm'
 import InputsForm from '../InputsForm/InputsForm'
 import SelectForm from '../InputsForm/SelectForm'
 
-const FormAddOperation = ({handleComeBack, functionUser, setViewModal, amount, concept, category, data ,editing, type, arrCategory, alert}) => {
+const FormAddOperation = ({ functionUser, setViewModal, amount, concept, category, date ,editing, type, arrCategory, alert}) => {
 
 
     const {name_exp, budget_exp} = exp_reg
@@ -22,11 +22,11 @@ const FormAddOperation = ({handleComeBack, functionUser, setViewModal, amount, c
             amount,
             concept,
             category,
-            data,
+            date,
         }}
 
 
-        validate={({amount, concept, category, data}) => {
+        validate={({amount, concept, category, date}) => {
 
             let errors = {}
 
@@ -62,9 +62,9 @@ const FormAddOperation = ({handleComeBack, functionUser, setViewModal, amount, c
                 errors.concept = 'No special characters allowed.'
             }
 
-            if(!data){
+            if(!date){
 
-                errors.data = 'Enter a valid data.'
+                errors.date = 'Enter a valid date.'
             }
 
 
@@ -76,9 +76,22 @@ const FormAddOperation = ({handleComeBack, functionUser, setViewModal, amount, c
 
 
         onSubmit={async (values) => {
-            console.log(values)
 
-            // functionUser(values)
+            if(editing){
+                
+                functionUser(values)
+
+                return
+            }
+
+            const typeOperation = type ? 'expense' : 'income'
+
+            const {amount, concept, category, date} = values
+
+            const value = {amount, concept, category, date, type: typeOperation}
+
+            functionUser(value)
+
             
         }}
         
@@ -151,25 +164,40 @@ const FormAddOperation = ({handleComeBack, functionUser, setViewModal, amount, c
                     <div>
                         <InputsForm
                         type="date"
-                        value={values.data}
+                        value={values.date}
                         onChange={handleChange}
-                        name="data"
+                        name="date"
 
-                        touched={ touched.data}
-                        error={errors.data}
+                        touched={ touched.date}
+                        error={errors.date}
                         onBlur={handleBlur}
                         />
                         <div className="mt-1">
-                            {errors.data && touched.data && <AlertInputs error={errors.data}/>}
+                            {errors.date && touched.date && <AlertInputs error={errors.date}/>}
                         </div>
 
                     </div>
 
+
+                    {editing ? 
+
+                    <div className="flex flex-col mt-2 gap-4">
+                        <ButtonForm text='Save'/>
+                        <button 
+                        className="text-white bg-red-700 hover:bg-red-800 duration-300 font-semibold p-3 px-5 rounded-md w-full" 
+                        onClick={() => setViewModal(false)}>Cancel</button>
+                    </div>
+                    
+                    :  
+                    
                     <div className="mt-2">
                         <ButtonForm text='Add'/>
                     </div>
+                    
+                    }
+                   
 
-
+                    
                 </form>
 
              

@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { ExpenseCategory, IncomeCategory } from '../../helpers/ArrOfCaregory'
+import { formatDateForTheForm } from '../../helpers/FormatDate'
 import FormAddOperation from '../Form/FormAddOperation'
 
 const ModalEditOperation = ({setViewModal, editOperation,  editionOper, alert, type}) => {
@@ -20,7 +21,7 @@ const ModalEditOperation = ({setViewModal, editOperation,  editionOper, alert, t
             amount={editionOper.amount}
             concept={editionOper.concept}
             category={editionOper.category}
-            data={editionOper.data}
+            date={formatDateForTheForm(editionOper.date)}
 
             editing={true}
 
@@ -41,7 +42,8 @@ const ModalEditOperation = ({setViewModal, editOperation,  editionOper, alert, t
             amount={editionOper.amount}
             concept={editionOper.concept}
             category={editionOper.category}
-            data={editionOper.data}
+            date={formatDateForTheForm(editionOper.date)}
+
 
             
 

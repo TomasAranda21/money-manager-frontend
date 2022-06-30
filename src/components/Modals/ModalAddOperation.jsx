@@ -70,7 +70,7 @@ const ModalAddOperation = ({setViewModal, addOperation, alert}) => {
                     amount={""}
                     concept={""}
                     category={""}
-                    data={""}
+                    date={""}
 
                     arrCategory={ExpenseCategory}
                     handleComeBack={handleComeBack}
@@ -95,7 +95,7 @@ const ModalAddOperation = ({setViewModal, addOperation, alert}) => {
                     concept={""}
                     category={""}
                     arrCategory={IncomeCategory}
-                    data={""}
+                    date={""}
                     handleComeBack={handleComeBack}
                     alert={alert}
                     /> 
