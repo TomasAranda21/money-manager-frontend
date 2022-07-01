@@ -57,9 +57,13 @@ const FormLoginAndRegister = ({ login, functionUser, alert }) => {
         }}
 
 
-        onSubmit={async (values, {resetForm}) => {
+        onSubmit={async ({email, name, password}, {resetForm}) => {
 
-            functionUser(values)
+            const emailtoLowerCase = email.toLowerCase()
+
+            const value = {email: emailtoLowerCase, password, name}
+
+            functionUser(value)
 
             resetForm()
             
@@ -72,7 +76,7 @@ const FormLoginAndRegister = ({ login, functionUser, alert }) => {
                 <form action="" onSubmit={handleSubmit} className="flex flex-col gap-8">
 
                     {alert.msg && <AlertAuth text={alert.msg} error={alert.error}/>}
-
+                    <h2 className='text-center font-bold uppercase text-xl underline-offset-1 underline'>{login ? 'Log in' : 'REGISTER'}</h2>
                     
                     <div className="flex flex-col gap-2 text-center">
                         <h2 className="text-2xl font-semibold">👋 Hi!</h2>
@@ -151,7 +155,7 @@ const FormLoginAndRegister = ({ login, functionUser, alert }) => {
 
 
 
-                    <div className=" flex justify-center">
+                    <div className=" text-center">
 
                         {login ? 
                         
