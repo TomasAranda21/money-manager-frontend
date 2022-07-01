@@ -3,8 +3,14 @@ import { createContext } from 'react'
 import Axios from '../config/Axios'
 import checkToken from '../helpers/CheckToken'
 
+
+import withReactContent from 'sweetalert2-react-content'
+import Swal from 'sweetalert2/dist/sweetalert2.all.js';
+
+
 const OperationContext = createContext()
 
+const MySwal = withReactContent(Swal)
 
 
 export const OperationProvider = ({children}) => {
@@ -53,11 +59,20 @@ export const OperationProvider = ({children}) => {
             const { data } = await Axios.post('/', value, checkToken(token))
     
             setOperations([data, ...operations])
+
+            await MySwal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: `The ${value.type} was added successfully`,
+                showConfirmButton: false,
+                timer: 2000
+            })
             
         } catch (error) {
 
             console.log(error)
             
+
         }
 
     }
@@ -72,6 +87,15 @@ export const OperationProvider = ({children}) => {
 
 
             setOperations(updatedOperations)
+
+            await MySwal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Operation edited successfully',
+                showConfirmButton: false,
+                timer: 1500
+              })
+    
 
         } catch (error) {
             console.log(error)
@@ -89,23 +113,31 @@ export const OperationProvider = ({children}) => {
 
     const deleteOperation = async ({id, _id}) => {
 
-    const deleted = confirm('Sure you want to delete?')
-
-    if(deleted) {
-
-        try {
-            const {data} = await Axios.post(`/${id[0]}`, {_id}, checkToken(token))
-
-
-            const operationsDelete = operations.filter(operation => operation._id !== id)
+        MySwal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
             
-            setOperations(operationsDelete)
+        }).then(async (result) => {
+            if (result.isConfirmed) {
             
-        } catch (error) {
-            console.log(error)
-        }
-    }
-
+                try {
+                    const {data} = await Axios.post(`/${id[0]}`, {_id}, checkToken(token))
+        
+        
+                    const operationsDelete = operations.filter(operation => operation._id !== id)
+                    
+                    setOperations(operationsDelete)
+                    
+                } catch (error) {
+                    console.log(error)
+                }
+            }
+        })
 
     }
 

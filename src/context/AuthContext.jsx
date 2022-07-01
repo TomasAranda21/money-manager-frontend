@@ -3,6 +3,10 @@ import { createContext } from 'react'
 import Axios from '../config/Axios'
 import checkToken from '../helpers/CheckToken'
 
+import withReactContent from 'sweetalert2-react-content'
+import Swal from 'sweetalert2/dist/sweetalert2.all.js';
+
+
 const AuthContext = createContext()
 
 export const AuthProvider = ({children}) => {
@@ -134,14 +138,25 @@ export const AuthProvider = ({children}) => {
 
   const logOut = async () => {
 
-    const exit = confirm('¿Seguro que quieres cerrar sesion?')
+    const MySwal = withReactContent(Swal)
 
-    if(exit){
+        MySwal.fire({
+            title: 'Are you sure you want to log out?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes'
+          }).then((result) => {
+            if (result.isConfirmed) {
 
-        localStorage.removeItem('token_user000123040501')
+                localStorage.removeItem('token_user000123040501')
 
-        setAuth({})
-    }
+                setAuth({})
+                
+                return
+            }
+          })
 
   }
 
