@@ -30,7 +30,7 @@ const Header = ({money, img, logOut}) => {
             <div className="flex flex-col md:flex-row items-center gap-2">
                 <div className="h-14 w-14 md:h-20 md:w-20 overflow-hidden shadow-2xl border-2 border-cyan-300 rounded-full">
                     
-                {img === 'img' || img == underline ?  <img src="https://www.pavilionweb.com/wp-content/uploads/2017/03/man-300x300.png" alt="" className=" object-cover"/> 
+                {img === 'img' || img == undefined ?  <img src="https://www.pavilionweb.com/wp-content/uploads/2017/03/man-300x300.png" alt="" className=" object-cover"/> 
                 
                 : <img src={img.url} alt="" className=" object-cover"/>
                 
@@ -43,7 +43,7 @@ const Header = ({money, img, logOut}) => {
                 className="flex items-center mb-4 md:mb-0 gap-2 text-sm md:text-xl font-semibold bg-slate-100 shadow-xl p-2 border-2 border-cyan-300 rounded">
 
                     <p> 💰 My Budget:</p>
-                    { money.startsWith('-') ? 
+                    { money?.startsWith('-') ? 
 
                         <h2 className="text-red-600 font-bold">${money}</h2>
 
