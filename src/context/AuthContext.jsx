@@ -19,6 +19,9 @@ export const AuthProvider = ({children}) => {
 
   const token = localStorage.getItem('token_user000123040501')
 
+
+
+
   useEffect(() => {
 
     const authUser = async () => {
@@ -94,12 +97,30 @@ export const AuthProvider = ({children}) => {
 
     try {
 
-      await Axios.post('/register-users', { name, email, password})
-      
+      const {data} = await Axios.post('/register-users', { name, email, password})
+
+      setAlert({
+        msg: "Your account was created successfully!, Now you can login",
+        error: false
+      })
+
+      setTimeout(() => {
+  
+        window.location.href = "/"
+  
+      }, 1000)
+
     } catch (error) {
-      console.log(error)
+      
+      setAlert({
+        msg: error?.response.data.msg,
+        error:true
+      })
+      
+      return
     }
 
+    
   }
 
 
@@ -111,16 +132,14 @@ export const AuthProvider = ({children}) => {
 
       setAuth(data)
 
-      setAlert({
-        msg: "Congratulations change made successfully!",
-        error:false
-      })
-      
       setTimeout(() => {
 
-        setAlert({})
+        setAlert({
+          msg: "Congratulations change made successfully!",
+          error:false
+        })
 
-      }, 5000)
+      }, 500)
       
 
     } catch (error) {
