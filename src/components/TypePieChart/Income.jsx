@@ -20,15 +20,16 @@ const Income = ({operations}) => {
             const result = await getOperation('income', operations)
 
             const resultSum = await sumAmountTypes('income', operations)
-    
+            
+            setSumAmout(resultSum)
             setCategoryAmount(result)
 
-            setSumAmout(resultSum)
+
         }
 
         getOperationType()
 
-    }, [])
+    }, [operations])
 
 
     useEffect(() => {
@@ -39,6 +40,7 @@ const Income = ({operations}) => {
             const interest = getAllAmout('interest', categoryAmount)
             const gift = getAllAmout('gift', categoryAmount)
             const others = getAllAmout('others', categoryAmount)
+
 
            
             setCategories([salary, interest, gift, others])
