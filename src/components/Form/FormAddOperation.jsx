@@ -1,15 +1,19 @@
 import {Formik} from 'formik'
+import { useState } from 'react'
 import exp_reg from '../../helpers/Exp_reg'
 import AlertAuth from '../Alerts/AlertAuth'
 import AlertInputs from '../Alerts/AlertInputs'
 import ButtonForm from '../Buttons/ButtonForm'
 import InputsForm from '../InputsForm/InputsForm'
 import SelectForm from '../InputsForm/SelectForm'
+import SpinnerLoaded from '../Spinner/SpinnerLoaded'
 
 const FormAddOperation = ({ functionUser, setViewModal, amount, concept, category, date ,editing, type, arrCategory, alert, id}) => {
 
 
     const {name_exp, budget_exp} = exp_reg
+
+    const [isLoading, setLoading] = useState(false)
 
 
   return (
@@ -58,7 +62,13 @@ const FormAddOperation = ({ functionUser, setViewModal, amount, concept, categor
 
                 errors.concept = 'Enter a valid concept.'
 
-            }else if(!name_exp.test(concept)){
+            }else if(concept.length > 30){
+
+                errors.concept = 'No more than 30 characters allowed'
+
+            }
+            
+            else if(!name_exp.test(concept)){
                 errors.concept = 'No special characters allowed.'
             }
 
@@ -84,6 +94,16 @@ const FormAddOperation = ({ functionUser, setViewModal, amount, concept, categor
                 
                 functionUser(value)
 
+                setLoading(true)
+
+                setTimeout(() => {
+
+                    setLoading(false)
+
+                    setViewModal(false)
+
+                }, 1500)
+
                 return
             }
 
@@ -94,6 +114,16 @@ const FormAddOperation = ({ functionUser, setViewModal, amount, concept, categor
             const value = {amount, concept, category, date, type: typeOperation, id}
 
             functionUser(value)
+
+            setLoading(true)
+
+            setTimeout(() => {
+
+                setViewModal(false)
+
+                setLoading(false)
+
+            }, 1500)
 
             
         }}
@@ -182,7 +212,7 @@ const FormAddOperation = ({ functionUser, setViewModal, amount, concept, categor
                     </div>
 
 
-                    {editing ? 
+                    {!isLoading ? editing ? 
 
                     <div className="flex flex-col mt-2 gap-4">
                         <ButtonForm text='Save'/>
@@ -195,6 +225,11 @@ const FormAddOperation = ({ functionUser, setViewModal, amount, concept, categor
                     
                     <div className="mt-2">
                         <ButtonForm text='Add'/>
+                    </div>
+                    
+                    : 
+                    <div className="mt-2">
+                        <SpinnerLoaded/>
                     </div>
                     
                     }

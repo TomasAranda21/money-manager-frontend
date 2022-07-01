@@ -3,6 +3,10 @@ import { createContext } from 'react'
 import Axios from '../config/Axios'
 import checkToken from '../helpers/CheckToken'
 
+import withReactContent from 'sweetalert2-react-content'
+import Swal from 'sweetalert2/dist/sweetalert2.all.js';
+
+
 const AuthContext = createContext()
 
 export const AuthProvider = ({children}) => {
@@ -14,6 +18,10 @@ export const AuthProvider = ({children}) => {
   const [alert, setAlert ] = useState({});
 
   const token = localStorage.getItem('token_user000123040501')
+
+  const MySwal = withReactContent(Swal)
+
+
 
   useEffect(() => {
 
@@ -51,7 +59,7 @@ export const AuthProvider = ({children}) => {
 
 
 
-  }, [])
+  }, [auth])
 
   
   
@@ -90,12 +98,30 @@ export const AuthProvider = ({children}) => {
 
     try {
 
-      await Axios.post('/register-users', { name, email, password})
-      
+      const {data} = await Axios.post('/register-users', { name, email, password})
+
+      setAlert({
+        msg: "Your account was created successfully!, Now you can login",
+        error: false
+      })
+
+      setTimeout(() => {
+  
+        window.location.href = "/"
+  
+      }, 1000)
+
     } catch (error) {
-      console.log(error)
+      
+      setAlert({
+        msg: error?.response.data.msg,
+        error:true
+      })
+      
+      return
     }
 
+    
   }
 
 
@@ -107,17 +133,15 @@ export const AuthProvider = ({children}) => {
 
       setAuth(data)
 
-      setAlert({
-        msg: "Congratulations change made successfully!",
-        error:false
+
+      await MySwal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: "Congratulations change made successfully!",
+        showConfirmButton: false,
+        timer: 1500
       })
-      
-      setTimeout(() => {
 
-        setAlert({})
-
-      }, 5000)
-      
 
     } catch (error) {
 
@@ -134,18 +158,26 @@ export const AuthProvider = ({children}) => {
 
   const logOut = async () => {
 
-    const exit = confirm('¿Seguro que quieres cerrar sesion?')
 
-    if(exit){
+        MySwal.fire({
+            title: 'Are you sure you want to log out?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes'
+          }).then((result) => {
+            if (result.isConfirmed) {
 
-        localStorage.removeItem('token_user000123040501')
+                localStorage.removeItem('token_user000123040501')
 
-        setAuth({})
-    }
+                setAuth({})
+                
+                return
+            }
+          })
 
   }
-
-
 
 
 

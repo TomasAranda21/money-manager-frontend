@@ -19,11 +19,11 @@ const TableTransactions = ({type, operations, deleteOperation, setEdition, setVi
 
   return (
 
-    <div className={`border-b-2 md:w-2/3   w-full mx-auto overflow-auto   rounded-xl p-5 
-    ${type !== 'expense' ? 'border-cyan-500' : 'border-red-600'}   `}>  
+    <div className="block  w-full overflow-x-auto rounded-2xl px-2 p-1">  
 
 
-        <table className="w-full ">
+        <table className={`border-b-2  mx-auto  rounded-xl w-full px-5 min-w-max lg:w-2/3 shadow-2xl 
+        ${type !== 'expense' ? 'border-cyan-500 shadow-cyan-300' : 'border-red-600 shadow-red-300'}   `}>
             
             <thead className=" ">
                 <tr className={`${type !== 'expense' ? 'bg-cyan-500' : 'bg-red-600'} text-white font-bold `}>
@@ -39,13 +39,13 @@ const TableTransactions = ({type, operations, deleteOperation, setEdition, setVi
             <tbody className="">
                 {typeOperation?.map(oper => (
 
-                    <tr className="text-center border hover:bg-slate-200 capitalize" key={oper._id}>
+                    <tr className="text-center border hover:bg-slate-200 normal-case" key={oper._id}>
 
                         <td>${oper.amount}</td>
 
                         <td>{oper.category}</td>
 
-                        <td>{oper.concept}</td>
+                        <td className=' break-all w-28 '>{oper.concept}</td>
 
                         <td className="">{formatDate(oper.date)}</td>
 
