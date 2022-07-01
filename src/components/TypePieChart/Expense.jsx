@@ -27,7 +27,8 @@ const Expense = ({operations}) => {
 
         getOperationType()
 
-    }, [])
+    }, [operations])
+
 
 
     useEffect(() => {

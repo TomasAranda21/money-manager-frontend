@@ -6,7 +6,7 @@ import ButtonForm from '../Buttons/ButtonForm'
 import InputsForm from '../InputsForm/InputsForm'
 import SelectForm from '../InputsForm/SelectForm'
 
-const FormAddOperation = ({ functionUser, setViewModal, amount, concept, category, date ,editing, type, arrCategory, alert}) => {
+const FormAddOperation = ({ functionUser, setViewModal, amount, concept, category, date ,editing, type, arrCategory, alert, id}) => {
 
 
     const {name_exp, budget_exp} = exp_reg
@@ -78,8 +78,11 @@ const FormAddOperation = ({ functionUser, setViewModal, amount, concept, categor
         onSubmit={async (values) => {
 
             if(editing){
+
+                const {amount, concept, category, date} = values
+                const value = {amount, concept, category, date, _id: id}
                 
-                functionUser(values)
+                functionUser(value)
 
                 return
             }
@@ -88,7 +91,7 @@ const FormAddOperation = ({ functionUser, setViewModal, amount, concept, categor
 
             const {amount, concept, category, date} = values
 
-            const value = {amount, concept, category, date, type: typeOperation}
+            const value = {amount, concept, category, date, type: typeOperation, id}
 
             functionUser(value)
 

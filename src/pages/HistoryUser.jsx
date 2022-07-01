@@ -9,7 +9,7 @@ const HistoryUser = () => {
 
     const {operations, deleteOperation, editionOper, setEdition, updateOperation} = useOperation()
 
-    const { alert} = useAuth()
+    const { alert, auth} = useAuth()
 
     const [isViewExpen, setIsViewExpen] = useState(true)
 
@@ -18,12 +18,13 @@ const HistoryUser = () => {
     const [isType, setIstype] = useState('')
 
 
+
   return (
 
     <div>
-        <h1 className="text-center uppercase text-xl text-teal-700 underline font-bold mb-14">transaction history</h1>
+        <h1 className="text-center uppercase text-xl md:text-2xl text-teal-800 underline font-bold mb-14">transaction history</h1>
 
-        <div className="flex justify-center gap-10 mb-20">
+        <div className="flex justify-center gap-5 md:gap-10 mb-20">
 
             <ButtonsTypeTransaction type={false} onClick={() => setIsViewExpen(false)}/>
 
@@ -45,7 +46,7 @@ const HistoryUser = () => {
             setViewModal ={setViewModal}
             setEdition={setEdition}
     
-    
+            _id={auth._id}
             isType={setIstype}
     
             
@@ -53,6 +54,8 @@ const HistoryUser = () => {
         </div>
         
         : 
+
+        <div className="pb-32">
         
         <TableTransactions 
         type="income" 
@@ -61,11 +64,16 @@ const HistoryUser = () => {
         viewModal={viewModal}
         setViewModal ={setViewModal}
         setEdition={setEdition}
+        
+        _id={auth._id}
 
         isType={setIstype}
-
         
-        />}
+        />
+
+        </div>
+        
+        }
 
 
         {viewModal && 
@@ -76,7 +84,7 @@ const HistoryUser = () => {
             editionOper={editionOper} 
             alert={alert} 
             editOperation={updateOperation}
-
+            id={auth._id}
             type={isType}
         
         />

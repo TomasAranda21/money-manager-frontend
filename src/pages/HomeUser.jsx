@@ -18,7 +18,6 @@ const HomeUser = () => {
 
     const [isExpense, setIsExpense] = useState(true)
 
- 
 
   return (
 
@@ -59,7 +58,7 @@ const HomeUser = () => {
         </div>
 
 
-        {viewModal && <ModalAddOperation setViewModal={setViewModal} addOperation={addOperation} alert={alert}/>}
+        {viewModal && <ModalAddOperation setViewModal={setViewModal} addOperation={addOperation} alert={alert} id={auth._id}/>}
 
 
     </div>

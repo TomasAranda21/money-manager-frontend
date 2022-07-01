@@ -41,6 +41,7 @@ export const OperationProvider = ({children}) => {
         getOperation()
 
 
+
     }, [operations])
 
 
@@ -51,7 +52,7 @@ export const OperationProvider = ({children}) => {
 
             const { data } = await Axios.post('/', value, checkToken(token))
     
-            console.log(data)
+            setOperations([data, ...operations])
             
         } catch (error) {
 
@@ -67,7 +68,10 @@ export const OperationProvider = ({children}) => {
 
             const {data} = await Axios.put(`/${editionOper._id}`, values, checkToken(token))
 
-            console.log(data)
+            const updatedOperations = operations.map(oper => oper._id === data._id ? data : oper)
+
+
+            setOperations(updatedOperations)
 
         } catch (error) {
             console.log(error)
@@ -78,23 +82,23 @@ export const OperationProvider = ({children}) => {
 
     const setEdition = (oper) => {
 
-        console.log(oper)
         setEditionOper(oper)
 
     }
 
 
-    const deleteOperation = async (id) => {
+    const deleteOperation = async ({id, _id}) => {
 
     const deleted = confirm('Sure you want to delete?')
 
     if(deleted) {
 
         try {
-            const {data} = await Axios.delete(`/${id}`, checkToken(token))
+            const {data} = await Axios.post(`/${id[0]}`, {_id}, checkToken(token))
+
 
             const operationsDelete = operations.filter(operation => operation._id !== id)
-
+            
             setOperations(operationsDelete)
             
         } catch (error) {

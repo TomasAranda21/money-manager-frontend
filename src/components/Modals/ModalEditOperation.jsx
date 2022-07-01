@@ -3,7 +3,7 @@ import { ExpenseCategory, IncomeCategory } from '../../helpers/ArrOfCaregory'
 import { formatDateForTheForm } from '../../helpers/FormatDate'
 import FormAddOperation from '../Form/FormAddOperation'
 
-const ModalEditOperation = ({setViewModal, editOperation,  editionOper, alert, type}) => {
+const ModalEditOperation = ({setViewModal, editOperation,  editionOper, alert, type, id}) => {
 
   return (
      
@@ -24,11 +24,12 @@ const ModalEditOperation = ({setViewModal, editOperation,  editionOper, alert, t
             date={formatDateForTheForm(editionOper.date)}
 
             editing={true}
+            id={id}
 
-            arrCategory={ExpenseCategory}
+            arrCategory={ExpenseCategory.map(e => e.categories)}
             type={true}
             alert={alert}
-
+            
             
             /> 
         </div>
@@ -45,10 +46,10 @@ const ModalEditOperation = ({setViewModal, editOperation,  editionOper, alert, t
             date={formatDateForTheForm(editionOper.date)}
 
 
-            
+            id={id}
 
             editing={true}
-            arrCategory={IncomeCategory}
+            arrCategory={IncomeCategory.map(e => e.categories)}
             alert={alert}
             /> 
 

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { formatDate } from '../../helpers/FormatDate'
 
 
-const TableTransactions = ({type, operations, deleteOperation, setEdition, setViewModal, isType}) => {
+const TableTransactions = ({type, operations, deleteOperation, setEdition, setViewModal, isType, _id}) => {
 
     const [typeOperation, setTypeOperation] = useState([])
 
@@ -14,7 +14,7 @@ const TableTransactions = ({type, operations, deleteOperation, setEdition, setVi
         setTypeOperation(filterOperations)
 
 
-    }, [type])
+    }, [operations])
 
 
   return (
@@ -59,7 +59,7 @@ const TableTransactions = ({type, operations, deleteOperation, setEdition, setVi
 
                             }}>🖊</button>
 
-                            <button onClick={() => deleteOperation(oper._id)}
+                            <button onClick={() => deleteOperation({id: [oper._id] , _id})}
                             
                             >🗑</button>
                             

@@ -6,7 +6,7 @@ import ButtonFormtype from '../Buttons/ButtonFormtype'
 import { MdArrowBack } from 'react-icons/md';
 import ButtonClose from '../Buttons/ButtonClose';
 
-const ModalAddOperation = ({setViewModal, addOperation, alert}) => {
+const ModalAddOperation = ({setViewModal, addOperation, alert, id}) => {
 
     const [isIncome, setIsIncome] = useState(false)
     const [isExpense, setIsExpense] = useState(false)
@@ -65,6 +65,7 @@ const ModalAddOperation = ({setViewModal, addOperation, alert}) => {
             {isExpense &&
 
                 <div className="w-full px-4 lg:px-20">
+                    <h1 className="text-center mb-5 text-2xl font-bold uppercase text-red-600 underline tracking-wider">Expense</h1>
                     <FormAddOperation
                     setViewModal = {setViewModal} 
                     functionUser={addOperation}
@@ -78,6 +79,8 @@ const ModalAddOperation = ({setViewModal, addOperation, alert}) => {
                     type={true}
                     alert={alert}
 
+                    id={id}
+
                     
                     /> 
                 </div>
@@ -88,6 +91,7 @@ const ModalAddOperation = ({setViewModal, addOperation, alert}) => {
             {isIncome &&
 
                 <div className="w-full px-4 lg:px-20">
+                    <h1 className="text-center mb-5 text-2xl font-bold uppercase text-teal-600 tracking-wider underline">Income</h1>
 
                     <FormAddOperation 
                     setViewModal = {setViewModal} 
@@ -99,6 +103,9 @@ const ModalAddOperation = ({setViewModal, addOperation, alert}) => {
                     date={""}
                     handleComeBack={handleComeBack}
                     alert={alert}
+
+                    id={id}
+
                     /> 
 
                 </div>
