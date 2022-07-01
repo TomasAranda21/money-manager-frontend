@@ -62,7 +62,13 @@ const FormAddOperation = ({ functionUser, setViewModal, amount, concept, categor
 
                 errors.concept = 'Enter a valid concept.'
 
-            }else if(!name_exp.test(concept)){
+            }else if(concept.length > 30){
+
+                errors.concept = 'No more than 30 characters allowed'
+
+            }
+            
+            else if(!name_exp.test(concept)){
                 errors.concept = 'No special characters allowed.'
             }
 
