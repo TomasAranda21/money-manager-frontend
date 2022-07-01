@@ -19,6 +19,7 @@ export const AuthProvider = ({children}) => {
 
   const token = localStorage.getItem('token_user000123040501')
 
+  const MySwal = withReactContent(Swal)
 
 
 
@@ -132,15 +133,15 @@ export const AuthProvider = ({children}) => {
 
       setAuth(data)
 
-      setTimeout(() => {
 
-        setAlert({
-          msg: "Congratulations change made successfully!",
-          error:false
-        })
+      await MySwal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: "Congratulations change made successfully!",
+        showConfirmButton: false,
+        timer: 1500
+      })
 
-      }, 500)
-      
 
     } catch (error) {
 
@@ -157,7 +158,6 @@ export const AuthProvider = ({children}) => {
 
   const logOut = async () => {
 
-    const MySwal = withReactContent(Swal)
 
         MySwal.fire({
             title: 'Are you sure you want to log out?',
@@ -178,8 +178,6 @@ export const AuthProvider = ({children}) => {
           })
 
   }
-
-
 
 
 
