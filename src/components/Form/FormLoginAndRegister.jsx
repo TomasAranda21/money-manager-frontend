@@ -12,7 +12,6 @@ const FormLoginAndRegister = ({ login, functionUser, alert }) => {
 
     const {email_exp, pass_exp, name_exp} = exp_reg
 
-
   return (
 
     <>
@@ -58,9 +57,11 @@ const FormLoginAndRegister = ({ login, functionUser, alert }) => {
         }}
 
 
-        onSubmit={async (values) => {
+        onSubmit={async (values, {resetForm}) => {
 
             functionUser(values)
+
+            resetForm()
             
         }}
 

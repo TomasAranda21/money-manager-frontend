@@ -1,15 +1,19 @@
 import { Formik } from 'formik'
-import React from 'react'
+import React, { useState } from 'react'
 import exp_reg from '../../helpers/Exp_reg'
 import AlertAuth from '../Alerts/AlertAuth'
 import AlertInputs from '../Alerts/AlertInputs'
 import ButtonClose from '../Buttons/ButtonClose'
 import ButtonForm from '../Buttons/ButtonForm'
 import InputsForm from '../InputsForm/InputsForm'
+import SpinnerLoaded from '../Spinner/SpinnerLoaded'
 
 const FormEditBudget = ({setViewModal, functionOperation, id, alert, user_budget}) => {
 
     const { budget_exp} = exp_reg
+
+    const [isLoading, setLoading] = useState(false)
+
 
 
   return (
@@ -65,6 +69,16 @@ const FormEditBudget = ({setViewModal, functionOperation, id, alert, user_budget
 
             functionOperation({id, budget})
 
+            setLoading(true)
+
+            setTimeout(() => {
+
+                setViewModal(false)
+
+                setLoading(false)
+
+            }, 2500)
+
         }}
         
         >
@@ -93,10 +107,19 @@ const FormEditBudget = ({setViewModal, functionOperation, id, alert, user_budget
 
                     {alert.msg && <AlertAuth text={alert.msg} error={alert.error}/>}
 
-
+                    {!isLoading ? 
                     <div className="mt-10 w-2/3 mx-auto">
                         <ButtonForm text='Update Budget'/>
                     </div>
+                    
+                    :
+
+                    <div className="mt-10 w-2/3 mx-auto">
+                        <SpinnerLoaded/>
+                    </div>
+                    }
+
+                    
 
                 </form>
 
