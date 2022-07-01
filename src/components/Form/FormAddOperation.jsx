@@ -78,8 +78,11 @@ const FormAddOperation = ({ functionUser, setViewModal, amount, concept, categor
         onSubmit={async (values) => {
 
             if(editing){
+
+                const {amount, concept, category, date} = values
+                const value = {amount, concept, category, date, _id: id}
                 
-                functionUser(values)
+                functionUser(value)
 
                 return
             }
