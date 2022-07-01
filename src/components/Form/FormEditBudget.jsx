@@ -20,8 +20,16 @@ const FormEditBudget = ({setViewModal, functionOperation, id, alert, user_budget
 
         <div className="border border-yellow-600 md:w-2/3 mx-auto my-5 p-2">
             <p className="text-center text-xl font-medium ">Your current budget is: 
+
+            {
+                user_budget.startsWith('-') ?
+                <span className="text-orange-700 font-bold"> ${user_budget}</span>
+
+                : <span className="text-teal-600 font-bold"> ${user_budget}</span>
+                
+            }
             
-            <span className="text-orange-700 font-bold"> ${user_budget}</span></p>
+            </p>
 
         </div>
 
@@ -81,7 +89,6 @@ const FormEditBudget = ({setViewModal, functionOperation, id, alert, user_budget
                         <div className="mt-1">
                             {errors.budget && touched.budget && <AlertInputs error={errors.budget}/>}
                         </div>
-
                     </div>
 
                     {alert.msg && <AlertAuth text={alert.msg} error={alert.error}/>}
