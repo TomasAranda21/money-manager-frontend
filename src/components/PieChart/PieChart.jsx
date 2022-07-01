@@ -6,20 +6,38 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 
 export function PieChart( { categories, sumAmount, type } ) {
     
-    if(sumAmount === undefined) return 'cargando'
+    if(sumAmount === undefined) return 'loading'
 
-    const bg_colors = type.map(e => e.color)
-    const names_labels = type.map(e => e.categories)
+    let bg_colors;
+    let names_labels
+    
+
+    if(sumAmount !== 0 ) {
+
+        const bg = type.map(e => e.color)
+        const names = type.map(e => e.categories)
+
+        bg_colors = bg
+        names_labels = names
+
+    }else{
+
+        bg_colors = ['#7A8480']
+        names_labels = []
+
+    }
 
 
 
+
+    
   const data = {
 
     labels: names_labels,    
 
     datasets: [
       {
-        data: categories,
+        data: categories.every(e => e === 0) ? [ '100' ] : categories,
   
         backgroundColor: bg_colors,
 
