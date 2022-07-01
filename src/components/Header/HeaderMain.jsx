@@ -17,6 +17,7 @@ const Header = ({money, img, logOut}) => {
     const [viewModal, setViewModal] = useState(false)
 
 
+
   return (
 
 
@@ -42,7 +43,12 @@ const Header = ({money, img, logOut}) => {
                 className="flex items-center mb-4 md:mb-0 gap-2 text-sm md:text-xl font-semibold bg-slate-100 shadow-xl p-2 border-2 border-cyan-300 rounded">
 
                     <p> 💰 My Budget:</p>
-                    <h2>${money}</h2>
+                    { money.startsWith('-') ? 
+
+                        <h2 className="text-red-600 font-bold">${money}</h2>
+
+                        : <h2 className="font-bold">${money}</h2>
+                    }
 
                     <button onClick={() => setViewModal(true)}
                     className="text-green-500 font-bold text-xl md:text-2xl cursor-pointer hover:text-green-700 md:hover:text-3xl duration-300">
@@ -53,14 +59,17 @@ const Header = ({money, img, logOut}) => {
 
             </div>
 
-
             <div className="hidden md:flex md:flex-row items-center gap-5 font-semibold mt-10 md:mt-0 text-2xl md:text-base">
 
-                <Link to='/home' className="">Home</Link>
+                <Link to='/home' className="hover:text-gray-500 focus:text-gray-500 hover:underline focus:underline" >Home</Link>
 
-                <Link to='/home/transactions'>History</Link>
+                <Link className="hover:text-gray-500 focus:text-gray-500 hover:underline focus:underline" to='/home/transactions'>History</Link>
 
-                <button onClick={() => logOut()}>Log out</button>
+                <button className='p-1 px-3 bg-slate-800 text-white rounded-xl 
+                
+                hover:bg-slate-700 duration-200 border-b-2 border border-cyan-300 focus:border-none' 
+                
+                onClick={() => logOut()}>Log out</button>
 
             </div>
 
@@ -78,26 +87,30 @@ const Header = ({money, img, logOut}) => {
 
                     <div className=" bg-slate-900 text-gray-200 p-5 w-full absolute top-0 right-0 text-md h-screen">
 
-                            <button className="py-5 text-2xl font-bold" onClick={() => setIsMovile(false)}> X </button>
+                            <button className="py-5 text-2xl font-bold text-cyan-300" onClick={() => setIsMovile(false)}> X </button>
 
                         <div className=" flex flex-col items-center gap-24 pt-24">
 
-                            <Link to='/home' className="flex gap-2 items-center">
+                            <Link to='/home' className="flex gap-2 items-center text-cyan-300" onClick={() => setIsMovile(false)}>
                                 <p className="text-2xl"><HiHome /></p>
 
                                 Home
 
                             </Link>
 
-                            <Link to='/home/transactions' className="flex gap-2 items-center">
-                                <p className="text-2xl"><FaHistory /></p>
+                            <Link to='/home/transactions' className="flex gap-2 items-center text-cyan-300" onClick={() => setIsMovile(false)}>
+                                <p className="text-2xl "><FaHistory /></p>
 
                                 History
 
                             </Link>
 
 
-                            <button  className="flex gap-2 items-center" onClick={() => logOut()}>
+                            <button
+                            className='p-2 px-4 bg-slate-800 text-white rounded-xl flex gap-2 items-center 
+                
+                            hover:bg-slate-700 duration-200 border-b-2 border border-cyan-300 focus:border-none' 
+                            onClick={() => logOut()}>
                                 <p className="text-2xl"><BiLogOut /></p>
 
                                 Log out
