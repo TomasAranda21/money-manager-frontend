@@ -12,9 +12,9 @@ const PrivateLayout = () => {
 
     const { loadingOper } = useOperation()
 
-    if(loading) return 'cargando'
+    if(loading) return 'loading'
 
-    if(loadingOper) return 'cargando'
+    if(loadingOper) return 'loading'
 
     return (
         <>
