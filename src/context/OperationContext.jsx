@@ -126,16 +126,26 @@ export const OperationProvider = ({children}) => {
             if (result.isConfirmed) {
             
                 try {
-                    const {data} = await Axios.post(`/${id[0]}`, {_id}, checkToken(token))
+
+                        await Axios.post(`operation/${id[0]}`, {_id}, checkToken(token))
+                    .then( 
+                        await Axios.delete(`operation/${id[0]}`, checkToken(token)) 
+                    )
+
+                    
+
         
         
                     const operationsDelete = operations.filter(operation => operation._id !== id)
                     
                     setOperations(operationsDelete)
-                    
+
                 } catch (error) {
+
                     console.log(error)
+
                 }
+
             }
         })
 
