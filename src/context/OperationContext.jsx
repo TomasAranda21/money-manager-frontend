@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { createContext } from 'react'
 import Axios from '../config/Axios'
-import checkToken from '../helpers/CheckToken'
+import checkToken from '../helpers/checkToken'
 
 
 import withReactContent from 'sweetalert2-react-content'
