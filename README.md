@@ -1,5 +1,9 @@
 # Money Manager Frontend with React
 
+# This project was made in two different repositories here I leave the link to the backend repository
+
+`https://github.com/TomasAranda21/money-manager-backend`
+
 ## 🚀 About this project
 This project is Alkemy challenge income and expense control, I did it being able to demonstrate my skills in nodejs, React and tailwind. Hope you like
 
