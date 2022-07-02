@@ -13,7 +13,7 @@ const ModalEditOperation = ({setViewModal, editOperation,  editionOper, alert, t
 
         {type === 'expense' ?
 
-        <div className="w-full md:w-1/2 lg:w-1/3 px-4 lg:px-20">
+        <div className="w-full sm:w-2/3 xl:w-1/3 px-4 lg:px-20">
             <FormAddOperation
             setViewModal = {setViewModal} 
             functionUser={editOperation}
@@ -35,7 +35,7 @@ const ModalEditOperation = ({setViewModal, editOperation,  editionOper, alert, t
         </div>
 
         : 
-        <div className="w-full md:w-1/2 lg:w-1/3 px-4 lg:px-20">
+        <div className=" w-full sm:w-2/3 xl:w-1/3 px-4 lg:px-20">
 
             <FormAddOperation 
             setViewModal = {setViewModal} 

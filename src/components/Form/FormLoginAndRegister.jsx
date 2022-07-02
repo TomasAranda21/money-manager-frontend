@@ -15,7 +15,7 @@ const FormLoginAndRegister = ({ login, functionUser, alert }) => {
   return (
 
     <>
-    <div className="shadow-2xl white p-5 md:p-16 lg:w-1/3 py-16 mt-10 mx-auto border-2 border-sky-600">
+    <div className="shadow-2xl white p-5 md:p-16  w-full sm:w-2/3 xl:w-1/3 py-16 mt-10 mx-auto border-2 border-sky-600">
 
         <Formik
         initialValues={{

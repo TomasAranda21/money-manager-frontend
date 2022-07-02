@@ -19,7 +19,7 @@ const TableTransactions = ({type, operations, deleteOperation, setEdition, setVi
 
   return (
 
-    <div className="block  w-full overflow-x-auto rounded-2xl px-2 p-1">  
+    <div className="block  w-full overflow-x-auto px-2 p-1">  
 
 
         <table className={`border-b-2  mx-auto  rounded-xl w-full px-5 min-w-max lg:w-2/3 shadow-2xl 

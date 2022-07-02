@@ -18,7 +18,7 @@ const FormEditBudget = ({setViewModal, functionOperation, id, alert, user_budget
 
   return (
 
-    <div className="shadow-2xl bg-gray-100 rounded md:w-1/2 mx-auto my-40 p-5 relative">
+    <div className="shadow-2xl bg-gray-100 rounded w-full sm:w-2/3 xl:w-1/3 mx-auto my-40 p-5 relative">
 
         <h2 className="text-center md:text-2xl underline uppercase font-medium text-stone-800">Change your budget here</h2>
 
