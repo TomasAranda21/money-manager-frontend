@@ -215,9 +215,46 @@ export const AuthProvider = ({children}) => {
       return
       
     }
-
-    
   }
+
+
+
+  const sendEmailToRecoverPassword = async (value) => {
+
+    try {
+
+      const {data} = await Axios.post('/forgot-password', value)
+
+      setAlert({
+        msg: data.msg,
+        error:false
+      })
+
+      setTimeout(() => {
+
+        setAlert({})
+
+      }, 4000)
+      
+
+    } catch (error) {
+
+      setAlert({
+        msg: error?.response.data.msg,
+        error:true
+      })
+      
+      setTimeout(() => {
+
+        setAlert({})
+
+      }, 4000)
+    }
+
+  }
+
+
+
 
 
 
@@ -255,7 +292,10 @@ export const AuthProvider = ({children}) => {
       updateBudget,
       sendEmailToConfirmAccount,
       editProfile,
+      sendEmailToRecoverPassword,
       logOut,
+      setAuth,
+      setAlert,
       auth,
       loading,
       alert,
