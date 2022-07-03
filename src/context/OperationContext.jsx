@@ -57,7 +57,7 @@ export const OperationProvider = ({children}) => {
         try {
 
             const { data } = await Axios.post('/', value, checkToken(token))
-    
+
             setOperations([data, ...operations])
 
             await MySwal.fire({
@@ -70,9 +70,15 @@ export const OperationProvider = ({children}) => {
             
         } catch (error) {
 
-            console.log(error)
-            
+            await MySwal.fire({
 
+                icon: 'error',
+                title: 'Oops...',
+                text: `${error?.response.data.msg}`,
+                confirmButtonText: '<a href="/home/profile">I want to confirm my account</a>',
+                showCancelButton: true,
+
+            })
         }
 
     }

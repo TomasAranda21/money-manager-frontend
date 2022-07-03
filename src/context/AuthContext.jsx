@@ -125,6 +125,71 @@ export const AuthProvider = ({children}) => {
   }
 
 
+  const editProfile = async (values) => {
+    
+    console.log(values)
+
+    try {
+      const {data} = await Axios.put(`/edit-profile/${values.id}`, values, checkToken(token))
+  
+      console.log(data)
+  
+  
+      await MySwal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: "Your account was successfully edited!",
+        showConfirmButton: false,
+        timer: 1500
+      })
+      
+    } catch (error) {
+
+      setAlert({
+        msg: error?.response.data.msg,
+        error:true
+      })
+      
+      setTimeout(() => {
+
+        setAlert({})
+
+      }, 3000)
+    }
+
+
+  }
+
+
+
+  const sendEmailToConfirmAccount = async (id) => {
+
+    try {
+
+      const {data} = await Axios.post(`/confirm-account/${id}`, {}, checkToken(token))
+  
+      setAlert({
+        msg: data.msg,
+        error: false
+      })
+
+      setTimeout(() =>{
+
+        setAlert({})
+
+      }, 4000)
+      
+    } catch (error) {
+
+      console.log(error)
+      
+    }
+  }
+
+
+
+
+
   const updateBudget = async ({ id, budget }) => {
 
     try {
@@ -150,9 +215,46 @@ export const AuthProvider = ({children}) => {
       return
       
     }
-
-    
   }
+
+
+
+  const sendEmailToRecoverPassword = async (value) => {
+
+    try {
+
+      const {data} = await Axios.post('/forgot-password', value)
+
+      setAlert({
+        msg: data.msg,
+        error:false
+      })
+
+      setTimeout(() => {
+
+        setAlert({})
+
+      }, 4000)
+      
+
+    } catch (error) {
+
+      setAlert({
+        msg: error?.response.data.msg,
+        error:true
+      })
+      
+      setTimeout(() => {
+
+        setAlert({})
+
+      }, 4000)
+    }
+
+  }
+
+
+
 
 
 
@@ -188,7 +290,12 @@ export const AuthProvider = ({children}) => {
       registerUser,
       loginUser,
       updateBudget,
+      sendEmailToConfirmAccount,
+      editProfile,
+      sendEmailToRecoverPassword,
       logOut,
+      setAuth,
+      setAlert,
       auth,
       loading,
       alert,

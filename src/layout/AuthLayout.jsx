@@ -4,12 +4,16 @@ const AuthLayout = () => {
 
     return (
 
-        <>
-    
-            <main className= 'container mx-auto mt-10 p-10 gap-10'>
+        <>  
+        <div className="bg-gradient-to-r from-red-400 to-gray-500 min-h-screen w-full">
+
+            <main className= 'container mx-auto p-10 pt-20'>
             < Outlet /> 
         
             </main>
+
+        </div>
+    
         </>
     )
 }
