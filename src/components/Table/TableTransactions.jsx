@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react'
 
 import { formatDate } from '../../helpers/FormatDate'
 
+import { MdDeleteForever } from 'react-icons/md';
+import { BsPencilFill} from 'react-icons/bs';
+
 
 const TableTransactions = ({type, operations, deleteOperation, setEdition, setViewModal, isType, _id}) => {
 
@@ -27,14 +30,14 @@ const TableTransactions = ({type, operations, deleteOperation, setEdition, setVi
             
             <thead className=" ">
                 <tr className={`${type !== 'expense' ? 'bg-cyan-500' : 'bg-red-600'} text-white font-bold `}>
-                    <th className="py-3 px-3">Amount 💷</th>
+                    <th className="py-3 px-3">Amount 💵</th>
                     <th>Category 🧮</th>
                     <th>Concept 📝</th>
-                    <th>Date 🗓</th>
+                    <th>Date 📅</th>
                     <th></th>
                 </tr>
             </thead>
-
+            
        
             <tbody className="">
                 {typeOperation?.map(oper => (
@@ -51,17 +54,17 @@ const TableTransactions = ({type, operations, deleteOperation, setEdition, setVi
 
                         <td className="flex gap-5 my-5">
 
-                            <button onClick={() => {
+                            <button className="text-xl text-blue-700" onClick={() => {
                             
                             isType(oper.type)
                             setViewModal(true)
                             setEdition(oper)
 
-                            }}>🖊</button>
+                            }}><BsPencilFill/></button>
 
-                            <button onClick={() => deleteOperation({id: [oper._id] , _id})}
+                            <button className="text-2xl text-red-700" onClick={() => deleteOperation({id: [oper._id] , _id})}
                             
-                            >🗑</button>
+                            ><MdDeleteForever/></button>
                             
                         </td>
 
