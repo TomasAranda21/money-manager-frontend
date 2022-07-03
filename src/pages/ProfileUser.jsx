@@ -32,11 +32,6 @@ const ProfileUser = () => {
 
         </div>
         
-
-        <div>   
-
-        </div>
-
     </div>
 
 
