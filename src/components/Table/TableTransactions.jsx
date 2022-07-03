@@ -52,7 +52,7 @@ const TableTransactions = ({type, operations, deleteOperation, setEdition, setVi
 
                         <td className="">{formatDate(oper.date)}</td>
 
-                        <td className="flex gap-5 my-5">
+                        <td className="flex gap-5 my-5  items-center px-5">
 
                             <button className="text-xl text-blue-700" onClick={() => {
                             
