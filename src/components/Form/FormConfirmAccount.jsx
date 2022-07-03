@@ -28,11 +28,6 @@ const FormConfirmAccount = ({id, sendEmailToConfirmAccount, alert}) => {
 
             </div>
 
-            <div className="mx-auto">
-
-                {alert.msg && <AlertAuth text={alert.msg} error={alert.error}/>}
-            </div>
-
             </form>
         )}
         
