@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { BsPlusCircle } from 'react-icons/bs';
+import { BsPlusCircle, BsPencilFill } from 'react-icons/bs';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { HiHome } from 'react-icons/hi';
 import { FaHistory } from 'react-icons/fa';
@@ -28,16 +28,25 @@ const Header = ({money, img, logOut}) => {
         <div className="flex items-center justify-between container mx-auto relative p-5 ">
 
             <div className="flex flex-col md:flex-row items-center gap-2">
-                <div className="h-14 w-14 md:h-20 md:w-20 overflow-hidden shadow-2xl border-2 border-cyan-300 rounded-full">
+                <Link to="/home/profile">
+                    <div className="h-14 w-14 md:h-20 md:w-20 overflow-hidden shadow-2xl border-2 border-orange-500 rounded-full">
+                        
+                    {img === 'img' || img == undefined ?  
                     
-                {img === 'img' || img == undefined ?  <img src="https://www.pavilionweb.com/wp-content/uploads/2017/03/man-300x300.png" alt="" className=" object-cover"/> 
-                
-                : <img src={img.url} alt="" className=" object-cover"/>
-                
-                }
-                   
-                
-                </div>
+                    <div className="relative">
+                        <img src="https://res.cloudinary.com/dkxm9njd6/image/upload/v1656799468/user_fjmynn.png" alt="" className=" object-cover"/>
+                        <div className="absolute z-30 md:text-2xl top-7 right-1 md:top-10 md:right-1 text-stone-900">
+                            <BsPencilFill/>
+                        </div>
+                    </div>
+                    
+                    : <img src={img.url} alt="" className=" object-cover"/>
+                    
+                    }
+                    
+                    
+                    </div>
+                </Link> 
 
                 <div 
                 className="flex items-center mb-4 md:mb-0 gap-2 text-sm md:text-xl font-semibold bg-slate-100 shadow-xl p-2 border-2 border-cyan-300 rounded">
