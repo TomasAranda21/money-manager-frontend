@@ -35,7 +35,7 @@ const Header = ({money, img, logOut}) => {
                     
                     <div className="relative">
                         <img src="https://res.cloudinary.com/dkxm9njd6/image/upload/v1656799468/user_fjmynn.png" alt="" className=" object-cover"/>
-                        <div className="absolute z-30 md:text-2xl top-7 right-1 md:top-10 md:right-1 text-stone-900">
+                        <div className="absolute  md:text-2xl top-7 right-1 md:top-10 md:right-1 text-stone-900">
                             <BsPencilFill/>
                         </div>
                     </div>
@@ -48,7 +48,7 @@ const Header = ({money, img, logOut}) => {
                     </div>
                 </Link> 
 
-                <div 
+                <div onClick={() => setViewModal(true)}
                 className="flex items-center mb-4 md:mb-0 gap-2 text-sm md:text-xl font-semibold bg-slate-100 shadow-xl p-2 border-2 border-cyan-300 rounded">
 
                     <p> 💰 My Budget:</p>
@@ -92,7 +92,7 @@ const Header = ({money, img, logOut}) => {
                      
                 isMovile &&
                  
-                <div className="md:hidden absolute top-0 right-0 w-2/4">
+                <div className="md:hidden fixed top-0 right-0 w-2/4">
 
                     <div className=" bg-slate-900 text-gray-200 p-5 w-full absolute top-0 right-0 text-md h-screen">
 

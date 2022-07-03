@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import FormAddOperation from '../Form/FormAddOperation'
 import { ExpenseCategory, IncomeCategory } from '../../helpers/ArrOfCaregory'
 import ButtonFormtype from '../Buttons/ButtonFormtype'
@@ -10,7 +10,7 @@ const ModalAddOperation = ({setViewModal, addOperation, alert, id}) => {
 
     const [isIncome, setIsIncome] = useState(false)
     const [isExpense, setIsExpense] = useState(false)
-    
+
 
     const handleChangeOperation = (type, typeTwo) => {
 
@@ -28,9 +28,9 @@ const ModalAddOperation = ({setViewModal, addOperation, alert, id}) => {
 
   return (
 
-    <div className="absolute top-0 w-full h-screen left-0 backdrop-brightness-50 px-2">
+    <div className="fixed top-0 w-full h-screen left-0 backdrop-brightness-50 px-2">
 
-     <div className="shadow-2xl bg-gray-100 flex justify-center my-20 md:my-32  w-full sm:w-2/3 xl:w-1/3 mx-auto py-20 relative rounded-md border-2 border-teal-200">
+     <div className="shadow-2xl bg-gray-100 flex justify-center my-10 md:my-32  w-full sm:w-2/3 xl:w-1/3 mx-auto py-20 relative rounded-md border-2 border-teal-200">
 
         {isExpense === true || isIncome === true ?
 

@@ -7,7 +7,7 @@ const ModalEditOperation = ({setViewModal, editOperation,  editionOper, alert, t
 
   return (
      
-    <div className="absolute top-0 w-full h-screen left-0 backdrop-brightness-50">
+    <div className="fixed top-0 w-full h-screen left-0 backdrop-brightness-50">
 
       <div className="flex justify-center my-32">
 

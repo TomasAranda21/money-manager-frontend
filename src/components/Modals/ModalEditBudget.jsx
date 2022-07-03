@@ -8,7 +8,7 @@ const ModalEditBudget = ({setViewModal}) => {
 
   return (
 
-    <div className="absolute top-0 w-full h-screen left-0 backdrop-brightness-50 p-2">
+    <div className="fixed top-0 w-full h-screen left-0 backdrop-brightness-50 p-2">
         
         <FormEditBudget setViewModal={setViewModal} functionOperation={updateBudget} id={auth._id} alert={alert} user_budget={auth.budget}/>
         
