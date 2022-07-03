@@ -15,7 +15,7 @@ const FormLoginAndRegister = ({ login, functionUser, alert }) => {
   return (
 
     <>
-    <div className="shadow-2xl white p-5 md:p-16  w-full sm:w-2/3 xl:w-1/3 py-16 mt-10 mx-auto border-2 border-sky-600">
+    <div className="shadow-2xl bg-gray-100 p-5 md:p-16  w-full sm:w-2/3 xl:w-1/3 py-16 mt-10 mx-auto border-2 border-sky-600">
 
         <Formik
         initialValues={{
@@ -73,10 +73,10 @@ const FormLoginAndRegister = ({ login, functionUser, alert }) => {
             {({values, errors, touched, handleChange, handleSubmit, handleBlur}) => (
 
 
-                <form action="" onSubmit={handleSubmit} className="flex flex-col gap-8">
+                <form action="" onSubmit={handleSubmit} className="flex flex-col gap-5 md:gap-7">
 
                     {alert.msg && <AlertAuth text={alert.msg} error={alert.error}/>}
-                    <h2 className='text-center font-bold uppercase text-xl underline-offset-1 underline'>{login ? 'Log in' : 'REGISTER'}</h2>
+                    <h2 className='text-center font-bold capitalize text-2xl md:text-4xl '>{login ? 'Login' : 'Register '}</h2>
                     
                     <div className="flex flex-col gap-2 text-center">
                         <h2 className="text-2xl font-semibold">👋 Hi!</h2>
@@ -146,9 +146,15 @@ const FormLoginAndRegister = ({ login, functionUser, alert }) => {
                         </div>
                     </div>
 
+
                     {login ? 
 
-                      <ButtonForm text='Login'/>
+                    <div className="flex flex-col gap-4">
+
+                        <Link to='/forgot-password' className="text-gray-400 hover:text-gray-700 duration-100 ">Forgot Password?</Link>
+                        <ButtonForm text='Login'/>
+
+                    </div>
                     
                 
                     : <ButtonForm text='Sign In'/>}
