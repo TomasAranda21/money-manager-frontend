@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import AlertAuth from '../components/Alerts/AlertAuth'
-import Axios from '../config/axios'
+import Axios from '../config/Axios'
 
 const ConfirmAccount = () => {
 
