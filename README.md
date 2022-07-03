@@ -38,5 +38,5 @@ To run this project, you will need to add the following environment variables to
 
 ## Screenshots
  
-![App Screenshot](https://res.cloudinary.com/dkxm9njd6/image/upload/v1656716847/gif_bilpis.gif)
+![App Screenshot](https://res.cloudinary.com/dkxm9njd6/image/upload/v1656879068/gift_u8ow2z.gif)
 
