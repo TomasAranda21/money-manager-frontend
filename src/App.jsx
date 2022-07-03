@@ -19,6 +19,8 @@ import Register from './pages/RegisterUser'
 import PrivateLayout from './layout/PrivateLayout'
 import Home from './pages/HomeUser'
 import History from './pages/HistoryUser'
+import Profile from './pages/ProfileUser'
+import ConfirmAccount from './pages/ConfirmAccount'
 
 
 
@@ -38,6 +40,8 @@ function App() {
              
             
                   <Route path="sign-in" element={ <Register />} />
+
+                  <Route path="confirm-account/:token" element={ <ConfirmAccount />} />
           
             </Route>
 
@@ -48,6 +52,8 @@ function App() {
 
 
               <Route path="transactions" element={ <History />} />
+
+              <Route path="profile" element={ <Profile />} />
 
 
             </Route>
